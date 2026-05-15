@@ -9,24 +9,13 @@ import {
 } from '@heroicons/react/24/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
-import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
-import TwitterIcon from '../components/Icon/TwitterIcon';
 import heroImage from '../images/header-background.webp';
-import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
-import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
-import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
-import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
-import porfolioImage5 from '../images/portfolio/portfolio-5.jpg';
-import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
-import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
-import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
-import porfolioImage9 from '../images/portfolio/portfolio-9.jpg';
-import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
-import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
+import cdBlockerImage from '../images/portfolio/CDBlocker.png';
+import realEstateImage from '../images/portfolio/RealEstate.png';
+import squeezeImage from '../images/portfolio/Squezzed.png';
 import profilepic from '../images/profilepic.jpg';
-import testimonialImage from '../images/testimonial.webp';
 import {
   About,
   ContactSection,
@@ -34,9 +23,7 @@ import {
   Hero,
   HomepageMeta,
   PortfolioItem,
-  SkillGroup,
   Social,
-  TestimonialSection,
   TimelineItem,
 } from './dataDef';
 
@@ -44,8 +31,8 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'React Resume Template',
-  description: "Example site built with Tim Baker's react resume template",
+  title: 'Sreileak Theap - Software Engineer',
+  description: 'Full Stack Software Engineer specializing in React, Next.js, and Full Stack development. Based in Queens, NY.',
 };
 
 /**
@@ -59,7 +46,6 @@ export const SectionId = {
   Resume: 'resume',
   Skills: 'skills',
   Stats: 'stats',
-  Testimonials: 'testimonials',
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
@@ -69,18 +55,13 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `I'm Tim Baker.`,
+  name: `Hi! I'm Srei Leak Theap.`,
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I'm a Victoria based <strong className="text-stone-100">Full Stack Software Engineer</strong>, currently working
-        at <strong className="text-stone-100">Instant Domains</strong> helping build a modern, mobile-first, domain
-        registrar and site builder.
-      </p>
-      <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        In my free time time, you can catch me training in <strong className="text-stone-100">Muay Thai</strong>,
-        plucking my <strong className="text-stone-100">banjo</strong>, or exploring beautiful{' '}
-        <strong className="text-stone-100">Vancouver Island</strong>.
+        I'm a <strong className="text-stone-100">Full Stack Software Engineer</strong>, currently a
+        <strong className="text-stone-100"> Machine Learning Research Intern at Alvarado Lab</strong> and recent graduate of
+        <strong className="text-stone-100"> The Build Fellowship</strong>.
       </p>
     </>
   ),
@@ -104,162 +85,48 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `Use this bio section as your way of describing yourself and saying what you do, what technologies you like
-  to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing
-  in.`,
+  description: `I'm Srei Leak Theap. I'm a Queens-based Full Stack Software Engineer, currently a Machine Learning Research Intern at Alvarado Lab and recent graduate of The Build Fellowship.`,
   aboutItems: [
-    {label: 'Location', text: 'Victoria, BC', Icon: MapIcon},
-    {label: 'Age', text: '29', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Canadian / Irish', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, Muay Thai, Banjos', Icon: SparklesIcon},
-    {label: 'Study', text: 'University of Victoria', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Instant Domains, inc.', Icon: BuildingOffice2Icon},
+    {label: 'Location', text: 'Queens, NY', Icon: MapIcon},
+    {label: 'Phone', text: '347-940-0998', Icon: CalendarIcon},
+    {label: 'Education', text: 'BS Computer Science & Applied Mathematics', Icon: FlagIcon},
+    {label: 'Interests', text: 'ML, Full-Stack Dev, Open Source', Icon: SparklesIcon},
+    {label: 'Study', text: 'CUNY Queens College', Icon: AcademicCapIcon},
+    {label: 'Current Role', text: 'ML Research Intern, Math Tutor', Icon: BuildingOffice2Icon},
   ],
 };
-
-/**
- * Skills section
- */
-export const skills: SkillGroup[] = [
-  {
-    name: 'Spoken languages',
-    skills: [
-      {
-        name: 'English',
-        level: 10,
-      },
-      {
-        name: 'French',
-        level: 4,
-      },
-      {
-        name: 'Spanish',
-        level: 3,
-      },
-    ],
-  },
-  {
-    name: 'Frontend development',
-    skills: [
-      {
-        name: 'React',
-        level: 9,
-      },
-      {
-        name: 'Typescript',
-        level: 7,
-      },
-      {
-        name: 'GraphQL',
-        level: 6,
-      },
-    ],
-  },
-  {
-    name: 'Backend development',
-    skills: [
-      {
-        name: 'Node.js',
-        level: 8,
-      },
-      {
-        name: 'Rust',
-        level: 5,
-      },
-      {
-        name: 'Golang',
-        level: 4,
-      },
-    ],
-  },
-  {
-    name: 'Mobile development',
-    skills: [
-      {
-        name: 'React Native',
-        level: 9,
-      },
-      {
-        name: 'Flutter',
-        level: 4,
-      },
-      {
-        name: 'Swift',
-        level: 3,
-      },
-    ],
-  },
-];
 
 /**
  * Portfolio section
  */
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Project title 1',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage1,
+    title: 'Squeeze',
+    description: 'AI-powered community campaign platform. 2nd Place Winner at Morgan Stanley Code to Give Hackathon. Built full-stack with FastAPI, PostgreSQL, Next.js, AWS Bedrock, and LangGraph.',
+    url: 'https://github.com/TrackATeam4/TrackATeam4Project.git',
+    image: squeezeImage,
+    tags: ['Next.js', 'FastAPI', 'AWS Bedrock', 'PostgreSQL', 'LangGraph'],
   },
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage2,
+    title: 'CD Blocker',
+    description: 'Real-time AI detection app that detects and blurs credit cards and sensitive data with sub-300ms latency. Compatible with YouTube, Twitch, and OBS.',
+    url: 'https://github.com/sahed-saad/cd-blocker.git',
+    image: cdBlockerImage,
+    tags: ['Python', 'React', 'OpenCV', 'BYTE Hacks 2025'],
   },
   {
-    title: 'Project title 3',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage3,
+    title: 'Real Estate Platform',
+    description: 'Interactive property mapping platform with Mapbox visualization for zoning and property data. GraphQL with Apollo Client for optimized data fetching and caching.',
+    url: 'https://github.com/Meyyun/Interactive_Map_OpenAvenue.git',
+    image: realEstateImage,
+    tags: ['React', 'TypeScript', 'Next.js', 'Mapbox', 'GraphQL'],
   },
   {
-    title: 'Project title 4',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage4,
-  },
-  {
-    title: 'Project title 5',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage5,
-  },
-  {
-    title: 'Project title 6',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage6,
-  },
-  {
-    title: 'Project title 7',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage7,
-  },
-  {
-    title: 'Project title 8',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage8,
-  },
-  {
-    title: 'Project title 9',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage9,
-  },
-  {
-    title: 'Project title 10',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage10,
-  },
-  {
-    title: 'Project title 11',
-    description: 'Give a short description of your project here.',
-    url: 'https://reactresume.com',
-    image: porfolioImage11,
+    title: 'HackKnight',
+    description: '1st place in Most Popular Vote at HackKnight Fall 2025. A collaborative hackathon project showcasing creative problem solving and full-stack development.',
+    url: 'https://github.com/xiajieou/HackKnight.git',
+    image: 'https://opengraph.githubassets.com/1/xiajieou/HackKnight',
+    tags: ['HackKnight 2025', '1st Place Popular Vote'],
   },
 ];
 
@@ -268,67 +135,63 @@ export const portfolioItems: PortfolioItem[] = [
  */
 export const education: TimelineItem[] = [
   {
-    date: 'April 2007',
-    location: 'Clown college',
-    title: 'Masters in Beer tasting',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
-  },
-  {
-    date: 'March 2003',
-    location: 'School of Business',
-    title: 'What did you study 101',
-    content: <p>Describe your experience at school, what you learned, what useful skills you have acquired etc.</p>,
+    date: 'Expected May 2028',
+    location: 'Queens, NY',
+    title: 'Bachelor of Science in Computer Science and Applied Mathematics',
+    content: (
+      <p>
+        CUNY Queens College | GPA: 3.8/4.0 | Dean's List (Fall 2024, Spring 2025)
+        <br />
+        Relevant Coursework: Data Structures & Algorithms, OOP (C++, Java), Calculus I-III, Linear Algebra, Computer Assembly
+      </p>
+    ),
   },
 ];
 
 export const experience: TimelineItem[] = [
   {
-    date: 'March 2010 - Present',
-    location: 'Awesome Development Company',
-    title: 'Senior UX Engineer',
+    date: 'February 2026 - Present',
+    location: 'New York City, NY',
+    title: 'Machine Learning Research Intern',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        <strong>Alvarado Lab</strong>
+        <br />
+        Assisted in calibrating pose estimation software (AlphaPose, SLEAP, mmPose) and developed Python pipelines processing 1,000+ video frames, extracting 20+ biomechanical features with 25% preprocessing time reduction.
+        Annotated martial arts behavioral sequences using ethogram methods and built visualization tools for trajectory analysis, improving efficiency by 30%.
+        Supported ML workflows including feature extraction, dataset preparation, and exploratory data analysis.
       </p>
     ),
   },
   {
-    date: 'March 2007 - February 2010',
-    location: 'Garage Startup Studio',
-    title: 'Junior bug fixer',
+    date: 'Sep 2025 - Nov 2025',
+    location: 'New York City, NY',
+    title: 'Build Student Consultant, Software Engineering',
     content: (
       <p>
-        Describe work, special projects, notable achievements, what technologies you have been working with, and
-        anything else that would be useful for an employer to know.
+        <strong>The Build Fellowship</strong>
+        <br />
+        Engineered a real estate web platform using React, TypeScript, and Next.js with interactive Mapbox visualization for zoning and property data.
+        Integrated GraphQL with Apollo Client for optimized data retrieval and caching between property databases and dynamic map components.
+        Designed responsive, accessible UI with Material UI while collaborating in agile environment through PRs, code reviews, and technical documentation.
+      </p>
+    ),
+  },
+  {
+    date: 'January 2026 - Present',
+    location: 'New York City, NY',
+    title: 'College Assistant - Math Tutor',
+    content: (
+      <p>
+        <strong>Math Lab, Queens College</strong>
+        <br />
+        Tutored 25+ undergraduate students per semester in Pre-Calculus through Advanced Calculus and Linear Algebra.
+        Achieved 80%+ student improvement rate of at least one letter grade through one-on-one and group tutoring.
+        Broke down complex calculus and matrix problems into structured, step-by-step solutions.
       </p>
     ),
   },
 ];
-
-/**
- * Testimonial section
- */
-export const testimonial: TestimonialSection = {
-  imageSrc: testimonialImage,
-  testimonials: [
-    {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
-    },
-    {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
-    },
-    {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
-    },
-  ],
-};
 
 /**
  * Contact section
@@ -336,27 +199,32 @@ export const testimonial: TestimonialSection = {
 
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
-  description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
+  description: 'Feel free to reach out! I am always interested in learning about new opportunities and connecting with fellow engineers.',
   items: [
     {
       type: ContactType.Email,
-      text: 'reachout@timbaker.me',
-      href: 'mailto:reachout@timbaker.me',
+      text: 'theapsreileak@gmail.com',
+      href: 'mailto:theapsreileak@gmail.com',
+    },
+    {
+      type: ContactType.Phone,
+      text: '347-940-0998',
+      href: 'tel:347-940-0998',
     },
     {
       type: ContactType.Location,
-      text: 'Victoria BC, Canada',
-      href: 'https://www.google.ca/maps/place/Victoria,+BC/@48.4262362,-123.376775,14z',
-    },
-    {
-      type: ContactType.Instagram,
-      text: '@tbakerx',
-      href: 'https://www.instagram.com/tbakerx/',
+      text: 'Queens, NY',
+      href: 'https://www.google.com/maps/place/Queens,+NY',
     },
     {
       type: ContactType.Github,
-      text: 'tbakerx',
-      href: 'https://github.com/tbakerx',
+      text: 'GitHub',
+      href: 'https://github.com/Meyyun',
+    },
+    {
+      type: ContactType.LinkedIn,
+      text: 'LinkedIn',
+      href: 'https://www.linkedin.com/in/sreileak-theap-41167a312',
     },
   ],
 };
@@ -365,9 +233,7 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/reactresume/'},
-  {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Meyyun'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/sreileak-theap-41167a312'},
+  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com'},
 ];

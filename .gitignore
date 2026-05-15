@@ -35,3 +35,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# resume
+public/assets/resume.pdf
+public/resume.pdf

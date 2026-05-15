@@ -1,34 +1,20 @@
 import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
-import classNames from 'classnames';
-import Image from 'next/image';
-import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
+import Image, {StaticImageData} from 'next/image';
+import {FC, memo} from 'react';
 
-import {isMobile} from '../../config';
 import {portfolioItems, SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
-import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
 
 const Portfolio: FC = memo(() => {
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
-      <div className="flex flex-col gap-y-8">
+      <div className="flex flex-col gap-y-10">
         <h2 className="self-center text-xl font-bold text-white">Check out some of my work</h2>
-        <div className=" w-full columns-2 md:columns-3 lg:columns-4">
-          {portfolioItems.map((item, index) => {
-            const {title, image} = item;
-            return (
-              <div className="pb-6" key={`${title}-${index}`}>
-                <div
-                  className={classNames(
-                    'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
-                  )}>
-                  <Image alt={title} className="h-full w-full" placeholder="blur" src={image} />
-                  <ItemOverlay item={item} />
-                </div>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {portfolioItems.map((item, index) => (
+            <ProjectCard index={index} item={item} key={`${item.title}-${index}`} />
+          ))}
         </div>
       </div>
     </Section>
@@ -38,47 +24,57 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, description}}) => {
-  const [mobile, setMobile] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
-  const linkRef = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    // Avoid hydration styling errors by setting mobile in useEffect
-    if (isMobile) {
-      setMobile(true);
-    }
-  }, []);
-  useDetectOutsideClick(linkRef, () => setShowOverlay(false));
-
-  const handleItemClick = useCallback(
-    (event: MouseEvent<HTMLElement>) => {
-      if (mobile && !showOverlay) {
-        event.preventDefault();
-        setShowOverlay(!showOverlay);
-      }
-    },
-    [mobile, showOverlay],
-  );
+const ProjectCard: FC<{item: PortfolioItem; index: number}> = memo(({item}) => {
+  const {title, description, url, image, tags} = item;
+  const isExternal = typeof image === 'string';
 
   return (
     <a
-      className={classNames(
-        'absolute inset-0 h-full w-full  bg-gray-900 transition-all duration-300',
-        {'opacity-0 hover:opacity-80': !mobile},
-        showOverlay ? 'opacity-80' : 'opacity-0',
-      )}
+      className="group flex flex-col overflow-hidden rounded-xl bg-neutral-900 shadow-lg shadow-black/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/60"
       href={url}
-      onClick={handleItemClick}
-      ref={linkRef}
+      rel="noreferrer"
       target="_blank">
-      <div className="relative h-full w-full p-4">
-        <div className="flex h-full w-full flex-col gap-y-2 overflow-y-auto overscroll-contain">
-          <h2 className="text-center font-bold text-white opacity-100">{title}</h2>
-          <p className="text-xs text-white opacity-100 sm:text-sm">{description}</p>
-        </div>
-        <ArrowTopRightOnSquareIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
+      <div className="relative h-48 w-full overflow-hidden">
+        {isExternal ? (
+          <img
+            alt={title}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            src={image as string}
+          />
+        ) : (
+          <Image
+            alt={title}
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            placeholder="blur"
+            src={image as StaticImageData}
+          />
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent" />
       </div>
+
+      <div className="flex flex-1 flex-col gap-y-3 p-5">
+        <div className="flex items-start justify-between gap-x-2">
+          <h3 className="font-bold text-white text-base leading-tight">{title}</h3>
+          <ArrowTopRightOnSquareIcon className="h-4 w-4 shrink-0 text-orange-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+        </div>
+        <p className="text-sm text-neutral-400 leading-relaxed line-clamp-3">{description}</p>
+        {tags && tags.length > 0 && (
+          <div className="mt-auto flex flex-wrap gap-1.5 pt-2">
+            {tags.map(tag => (
+              <span
+                className="rounded-full bg-neutral-700 px-2.5 py-0.5 text-xs font-medium text-neutral-300"
+                key={tag}>
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="h-0.5 w-full bg-gradient-to-r from-orange-400 to-orange-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
     </a>
   );
 });
+
+ProjectCard.displayName = 'ProjectCard';
