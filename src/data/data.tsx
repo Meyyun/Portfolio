@@ -2,7 +2,6 @@ import {
   AcademicCapIcon,
   ArrowDownTrayIcon,
   BuildingOffice2Icon,
-  CalendarIcon,
   FlagIcon,
   MapIcon,
   SparklesIcon,
@@ -88,7 +87,6 @@ export const aboutData: About = {
   description: `I'm Srei Leak Theap. I'm a Queens-based Full Stack Software Engineer, currently a Machine Learning Research Intern at Alvarado Lab and recent graduate of The Build Fellowship.`,
   aboutItems: [
     {label: 'Location', text: 'Queens, NY', Icon: MapIcon},
-    {label: 'Phone', text: '347-940-0998', Icon: CalendarIcon},
     {label: 'Education', text: 'BS Computer Science & Applied Mathematics', Icon: FlagIcon},
     {label: 'Interests', text: 'ML, Full-Stack Dev, Open Source', Icon: SparklesIcon},
     {label: 'Study', text: 'CUNY Queens College', Icon: AcademicCapIcon},
@@ -205,11 +203,6 @@ export const contact: ContactSection = {
       type: ContactType.Email,
       text: 'theapsreileak@gmail.com',
       href: 'mailto:theapsreileak@gmail.com',
-    },
-    {
-      type: ContactType.Phone,
-      text: '347-940-0998',
-      href: 'tel:347-940-0998',
     },
     {
       type: ContactType.Location,
